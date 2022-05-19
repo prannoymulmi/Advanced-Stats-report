@@ -1,0 +1,44 @@
+\chapter{Assignment 3: A Simple Parameter Estimation}
+
+Given, is a density function of a random variable S which is a type of network router with a bandwidth total to first hardware failure dependent on a single unknown parameter $\theta$ and T is the bandwidth total to failure of the sequence of two routers. Also, the density for the random variable S is assumed to be modeled using an exponential distribution s(t)=  $\frac{1}{\theta} \exp{\frac{-t}{\theta}}$ . As T can be defined as the sum of the density functions of the two routers $S_1$  and $S_2$, we can express the density function of  $T= S_1+S_2$.\newline \newline 
+We can assume that the variables $S_1,S_2$,…,$S_n$ are independent and identically distributed. It can also be called an independent and identically distributed variable because the bandwidth total to failure of one router would not affect the other. Additionally, we can assume that the density function of the random variable is a continuous function, as it is modelled by an exponential function.\newline \newline
+Using the assumptions and using the transformation theorem (\cite{Iubh:2021}, pg. 97), we can calculate the sum of the two density functions $S_1$  and $S_2$ by convolving them, which can be also written in a short form as $T=S_1*S_2= \int_{-\infty}^{\infty} S_1(T-\tau) S_2(\tau) \,d\tau\ $.\newline\newline
+We can further simply the limits of the integral which start only from 0 because the flipped function does not overlap until it reaches 0 and then it only overlaps until t when it shifts so the convolution equation can be simplified as$T=S_1*S_2= \int_{0}^{t} S_1(T-\tau) S_2(\tau)\,d\tau\ $.The steps for calculating the density function of T are as follows:
+
+\begin{enumerate}
+    \item $ T = \int_{0}^{t} S_1(T-\tau) S_2(\tau)\,d\tau\ $
+    \item $ T = \int_{0}^{t} \frac{1}{\theta} e^{\frac{-(t-\tau)}{\theta}} \frac{1}{\theta} e^{\frac{-t}{\theta}}\,d\tau\ $
+    \item $ T = \frac{1}{\theta^2}\int_{0}^{t} e^{\frac{-t+\tau}{\theta}} e^{\frac{-t}{\theta}}\,d\tau\ $
+    \item $ T = \frac{1}{\theta^2}\int_{0}^{t} e^{\frac{-t+\tau-\tau}{\theta}}\,d\tau\ $
+    \item $ T = \frac{1}{\theta^2}\int_{0}^{t} e^{\frac{-t}{\theta}}\,d\tau\ $
+    \item $ T = \frac{1}{\theta^2} e^{\frac{-t}{\theta}}\int_{0}^{t} 1\,d\tau\ $ The exponential can be taken out because there is no dependence on $\tau$.
+    \item $ T = \frac{1}{\theta^2} e^{\frac{-t}{\theta}}[\tau]_{0}^{t} $
+    \item $ T = \frac{1}{\theta^2} e^{\frac{-t}{\theta}}(t-0) $ Replacing $\tau$ with the limits we
+    calculated the density of T.
+    \item $ T = \frac{1}{\theta^2} e^{\frac{-t}{\theta}}t$
+\end{enumerate}
+
+The calculated density function of T is 
+\begin{equation}\label{eqn:pdf_T}
+    f(y) =\begin{cases*}
+    \frac{1}{\theta^2} e^{\frac{-t}{\theta}}t &\text{for y$>$0} 
+    &\\0 &\text{elsewhere}
+    \end{cases*} \newline
+\end{equation}
+Using the density function of T, we can also calculate the likelihood function which is: 
+
+\begin{enumerate}
+    \item $ f(\theta/T) = \prod_{i=1}^{n} \frac{1}{\theta^2} e^{\frac{-t_i}{\theta}}t_i,  \forall_i \in {1,2,... n}, t_i \in [0, \theta]$
+    \item $ f(\theta/T) = \frac{1}{\theta^{2n}} e^{-\sum_{i=1}^{n} \frac{t_i}{\theta}} \prod_{i=1}^{n} t_i $. Simplifying the equation.
+\end{enumerate}
+So, the calculated likelihood function is $ f(\theta/T) = \frac{1}{\theta^{2n}} e^{-\sum_{i=1}^{n} \frac{t_i}{\theta}} \prod_{i=1}^{n} t_i $. This function can be transformed by using log, as the multiplications can be converted into sums which would be easier to calculate. The transformed likelihood function is $l(\theta) = log(\frac{1}{\theta^{2n}} + log(e^{-\sum_{i=1}^{n} \frac{t_i}{\theta}}) + log(\prod_{i=1}^{n} t_i)$. Using the transformed likelihood function we can calculate the maximum likelihood function for $\theta$ by finding the first derivative of the log function where the slope is 0.
+
+\begin{enumerate}
+    \item $ \frac{dl}{d\theta} = log(\frac{1}{\theta^{2n}} + log(e^{-\sum_{i=1}^{n} \frac{t_i}{\theta}}) + log(\prod_{i=1}^{n} t_i)$
+    \item $ \frac{dl}{d\theta} = log(1) - 2n log(\theta) + log(e^{-\sum_{i=1}^{n} \frac{t_i}{\theta}}) + log(\prod_{i=1}^{n} t_i)$
+    \item $ \frac{dl}{d\theta} =- 2n log(\theta) + log(e^{-\sum_{i=1}^{n} \frac{t_i}{\theta}}) + log(\prod_{i=1}^{n} t_i)$
+    \item $ \frac{dl}{d\theta} =\frac{-2n}{\theta} - {\sum_{i=1}^{n} \frac{t_i}{\theta^2}}+0$. The derivative with no dependence to $\theta$ is 0
+    \item $ 0 =\frac{-2n}{\theta} - {\sum_{i=1}^{n} \frac{t_i}{\theta^2}}$
+    \item $ \theta_{MLE} ={\sum_{i=1}^{n} \frac{t_i}{2n}}$
+\end{enumerate}
+The computed maximum likelihood of the bandwidth to total with the given data from the experiment is $T_{MLE}={\sum_{i=1}^{n} \frac{t_i}{2n}} = \frac{56}{10} =5.6$ and the expectation is E[T] = $\sum_{i=1}^{n} \frac{t_i}{n} = \frac{56}{5} = 11.2$.
