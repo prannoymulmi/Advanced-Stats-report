@@ -57,3 +57,11 @@ The Covariance of two variables can be calculated using cov(X,Y) =  $\frac{1}{N}
 Similarly, the Variance can be calculated using var[X]=$\frac{1}{N} \sum_{i=1}^{N}(x_i - \mu_x)^2$. The calculated variances are as follows Var[X]=13.60 and Var[Y]= 2.6e+5.
 
 \subsection{Task b}
+It is given that a ball is thrown at a random angle $\theta \in$ [0, 360) which is in degrees and in a random radius r $\in$ [0, 1] which are both independent and uniform. Due to the fact the random variables are uniform we can easily define their respective density functions f($\theta$) = $\frac{1}{360}$ and f(r) = 1. This can be calculated because the PDF of a uniformly distributed function is given by 
+
+\begin{equation}
+    f(x) = \frac{1}{b-a}  x \in [a, b] \text{( \cite{openstax} , pg. 317)}
+\end{equation} 
+Since both of the random variables $\theta$ and r are independent we can also calculate the joint density function $f_{r,\theta}(r, \theta) = f(r) f(y) =  1 \times \frac{1}{360} = \frac{1}{360}$. We can see that the given random variables r and $\theta$ are the polar coordinates which lie within a unit circle. This can be said because the support of r is [0, 1] and has an angle $\theta$ (0, 360) degrees which would depict a circle.\newline 
+Furthermore, with the polar coordinates, we can transform the variable f(r, $\theta$) $\rightarrow$ f(x,y) with $x > 0$ and $y > 0$. Using simple trigonometry we can derive the simple relationship of the points x and y lying in the Cartesian coordinates which are x = r cos($\theta \times \frac{360}{\pi}$) and  y = r sin($\theta \times \frac{360}{\pi}$).
+
