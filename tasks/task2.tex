@@ -114,7 +114,7 @@ Using the joint density function we can calculate the marginal density function 
 Calculating the densities of X and Y using the joint density.
 \begin{enumerate}\label{eqn:density_x_task_2_b_sol}
     \item $f(x) = \int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} f(x,y) dy $
-    \item $f(x) = \int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} \frac{1}{2\pi}\frac{1}{\sqrt{x^2+y^2}} dy$
+    \item $f(x) = \int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}}  \frac{1}{2\pi}\frac{1}{\sqrt{x^2+y^2}} dy$ Using Trigonometric substitution (\cite{wiki:trig} Tangent substitution)
     \item Substituting y = x tan(u) and $dy = x sec^2(u)du$ (using the quotient rule) we get $\sqrt{x^2+y^2}= \sqrt{x^2+x^2tan^2}= \sqrt{x^2(1+tan^2(u)} = \sqrt{x^2sec^2(u)} = x sec(u)$. \newline After substituting the values from above we get  $f(x) = \frac{1}{2\pi}\int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} \frac{xsec^2(u)}{x sec(u)} du = \frac{1}{2\pi}\int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} sec(u) du$.
     \item Multiplying the numerator and denominator by tan(u) and sec(u), we get $f(x) = \frac{1}{2\pi}\int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} \frac{sec^2(u) + sec(u)tan(u)}{sec(u)+tan(u)}du = \frac{1}{2\pi}\int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}}\frac{1}{s} ds = log(s).$
     \item Substituting $s = tan(u) + sec(u)$ and $ds = (sec^2(u) +tan(u)sec(u)$, we get $f(x) = \frac{1}{2\pi}\int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} log(tan(u) + sec(u)) du .$
