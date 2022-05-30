@@ -3,7 +3,7 @@ It is given that we have a sample data from a long running production of 1000 qu
 \begin{enumerate}
     \item The random variable for the sample are located mostly around the mean and outliers are very rare.
     \item The random variables are independent of one another.
-    \item The sample observation should be of a continious nature
+    \item The sample observation should be of a continuous nature
 \end{enumerate}
 As the model is assumed to be a normally distributed the parameters of them are the mean and its variance (\cite{Iubh:2021}, pg. 75) $\mathcal{N}(\mu, s^2) = \mathcal{N}(971, 231.04)$.\newline
 Given, are the weights of the newly produced hammers, with sample size n= 10:
@@ -34,11 +34,11 @@ An error I probability, which is the error of rejecting the null hypothesis when
     \item $d.o.f = 19.8$
     \item $d.o.f = 20$ ( rounded Up)
 \end{enumerate}
-With the d.o.f we can look up in the T-Table distribution (see \cite{t-table}) to find out the critical region for the $\alpha$ value of 0.05 of the two tailed distribution for 20 degrees of freedom which is 2.086 and we can rewrite the probability of the rejection region as $P(|T| > 2.086) = \frac{\alpha}{2}$. Firstly, we calculate the $T_{obv}$ from the test statistic using the welch's test. The calculation is as follows:
+With the d.o.f we can look up in the T-Table distribution (see \cite{t-table}) to find out the critical region for the $\alpha$ value of 0.05 of the two tailed distribution for 20 degrees of freedom which is 2.086 and we can rewrite the probability of the rejection region as $P(|T| > 2.086) = \frac{\alpha}{2}$. Firstly, we calculate the $T_{obv}$ from the test statistic using the welch's test. The calculation steps are as follows:
 \begin{enumerate}
     \item $T_{obv} = \frac{<X_1> - <X_2>}{\sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}}}$ where $X_1 = 971, X_2 = 971.3, S_1 = 15.2 \text{ and } S_2 = 11.10$ 
-     \item $T_{obv} = \frac{971 - 971.3}{\sqrt{\frac{231.04}{1000} + \frac{123.34}{10}}}$
-      \item $T_{obv} = - 0.084$
-      \item $|T_{obv}| = 0.084$
+    \item $T_{obv} = \frac{971 - 971.3}{\sqrt{\frac{231.04}{1000} + \frac{123.34}{10}}}$
+    \item $T_{obv} = - 0.084$
+    \item $|T_{obv}| = 0.084$
 \end{enumerate}
 Similarly, we can also calculate the p-value for the given test which is given as $P(T > |T_{obv}| | H_0) = 2P(T > 0.084 | H_0) = 0.933 $ (Calculated using wolfram alpha). Lastly, we can now conclude and say that we do not reject our null hypothesis because the the calculated p-value(0.933)  $> \alpha$ (0.05), which gives us a hint that these two samples are not statistically significant or in other words very similar and produce consistent results.
