@@ -119,23 +119,23 @@ plt.savefig('images/task_1_b.pdf')
 
 Given that Y is a random variable with time to hear an owl, and the probability ones needs to wait to hear the owl after y hours is:
 \begin{equation} \label{eqn:cdf_minus_1}
-    P(Y > y) = 0.3e^{-0.5y} + 0.7e^{-0.25y} (Rounded up)
+    P(Y > y) = \frac{1}{3}e^{-0.5y} + \frac{2}{3}e^{-0.25y}
 \end{equation}
 Since the probability given is the probability of hearing the owl after y hours is the complementary cumulative distribution function (CCDF) P(Y $>$ y), the CDF would be 1 minus the equation \ref{eqn:cdf_minus_1} (\cite{Iubh:2021}, pg.89). The CDF is as follows:
 \begin{equation} \label{eqn:cdf}
-    P(Y\leq y) = F(x) = 1 -(0.3e^{-0.5y} + 0.7e^{-0.25y})
+    P(Y\leq y) = F(x) = 1 -(\frac{1}{3}e^{-0.5y} + \frac{2}{3}e^{-0.25y})
 \end{equation}
 We can obtain the probability density function by taking the first derivative of the Cumulative distribution function. The steps for the derivative are below: 
 \begin{enumerate}
     \item $f(y) = \frac{\partial F}{\partial y}$
-    \item $f(y)= 1- (0.3e^{-0.5y} + 0.7e^{-0.25y})  \frac{\partial F}{\partial y}$
-   \item $f(y)= -(0.3e*-0.5e^{-0.5y} + 0.7-*0.25e^{-0.25y})  \frac{\partial F}{\partial y}$ 1 is removed because it is a constant
-   \item $f(y)= (0.15e^{-0.5y} + 0.175e^{-0.25y})$\label{eqn:pdf_exp}
+    \item $f(y)= 1- (\frac{1}{3}e^{-0.5y} + \frac{2}{3}e^{-0.25y})  \frac{\partial F}{\partial y}$
+   \item $f(y)= -(\frac{1}{3}e\times-0.5e^{-0.5y} + \frac{2}{3}-\times0.25e^{-0.25y})  \frac{\partial F}{\partial y}$ 1 is removed because it is a constant
+   \item $f(y)= (\frac{1}{6}e^{-0.5y} + \frac{1}{6}e^{-0.25y})$\label{eqn:pdf_exp}
 \end{enumerate}
     Therefore the PDF of the function is
 \begin{equation}\label{eqn:pdf_owl}
     f(y) =\begin{cases*}
-    0.15e^{-0.5y} + 0.175e^{-0.25y}&\text{for y$>$0}
+    \frac{1}{6}e^{-0.5y} + \frac{1}{6}e^{-0.25y}&\text{for y$>$0}
     &\\0&\text{elsewhere}
     \end{cases*} \newline
 \end{equation}
@@ -147,7 +147,7 @@ Additionally, the probability of hearing the owl lies in between the limits (2, 
 The steps for the calculations are as follows:
 \begin{enumerate}
     \item $ P(2< Y \le 4) = F_{Y}(4) - F_{Y}(2)$
-    \item $ P(2< Y \le 4) = 0.70 - 0.47$
+    \item $ P(2< Y \le 4) = 0.70 - 0.47$ (Values for 4 and 2 are substituted in the CDF)
     \item $ P(2< Y \le 4) = 0.23$
 \end{enumerate}
     
@@ -158,31 +158,30 @@ The mean μ can be calculated using E[Y]= $\mu$= $\int_{-\infty}^{\infty} yf(y)\
 \begin{enumerate}
     \item E[Y] = $\int_{-\infty}^{\infty} yf(y)\,dy$
     \item E[Y] = $\int_{0}^{\infty} yf(y)\,dy$.  We can change the limits from $-\infty$ to 0 because there exists no value before 0.
-    \item E[Y] = $\int_{0}^{\infty} y(0.15e^{-0.5y} + 0.175e^{-0.25y})\,dy$.
-    \item E[Y] = $\int_{0}^{\infty} 0.15ye^{-0.5y} + \int_{0}^{\infty} 0.175ye^{-0.25y}\,dy$.
-    \item E[Y] = $\int_{0}^{\infty} 0.15ye^{-0.5y} + \int_{0}^{\infty} 0.175ye^{-0.25y}\,dy$ \label{eqn:mean_line_5}
-    \item E[Y] = $[0.15(-2ye^{-0.5y}-4e^{-0.5y})]_0^\infty + [0.175(-4ye^{-0.25y}-16e^{-0.25y})]_0^\infty$ Using integration by parts formula
-    \item E[Y] = $[(-0.3ye^{-0.5y}-0.6e^{-0.5y})]_0^\infty + [-0.7ye^{-0.25y}-2.8e^{-0.25y})]_0^\infty$
-    \item E[Y] = $[\lim_{b\to\infty}(0)-(-0.3*0e^{-0.5*0}-0.6e^{-0.5*0})] + [\lim_{b\to\infty}(0)-(-0.7*0e^{-0.25*0}-2.8e^{-0.25*0})]$ Applying the limits.
-    \item E[Y] = 3.4
+    \item E[Y] = $\int_{0}^{\infty} y(\frac{1}{6}e^{-0.5y} + \frac{1}{6}e^{-0.25y})\,dy$.
+    \item E[Y] = $\int_{0}^{\infty} \frac{1}{6}ye^{-0.5y} + \int_{0}^{\infty} \frac{1}{6}ye^{-0.25y}\,dy$.
+    \item E[Y] = $\int_{0}^{\infty} \frac{1}{6}ye^{-0.5y} + \int_{0}^{\infty} \frac{1}{6}ye^{-0.25y}\,dy$ \label{eqn:mean_line_5}
+    \item E[Y] = $[\frac{1}{6}(-2ye^{-0.5y}-4e^{-0.5y})]_0^\infty + [\frac{1}{6}(-4ye^{-0.25y}-16e^{-0.25y})]_0^\infty$ Using integration by parts formula
+    \item E[Y] = $[(-\frac{1}{3}ye^{-0.5y}-\frac{2}{3}e^{-0.5y})]_0^\infty + [(-\frac{2}{3}ye^{-0.25y}-\frac{8}{3}e^{-0.25y})]_0^\infty$
+    \item E[Y] = $[\lim_{b\to\infty}(0)-(-\frac{1}{3}ye^{-0.5y}-\frac{2}{3}e^{-0.5y})] + [\lim_{b\to\infty}(0)-(\frac{2}{3}ye^{-0.25y}-\frac{8}{3}e^{-0.25y})]$ Applying the limits.
+    \item E[Y] = 3.33
 \end{enumerate}
-Therefore the expectation of the function E[Y]=$\mu$=3.4. Similarly, the variance can be calculated using the following formula Var[Y]= $\int_{-\infty}^{\infty}y^2f(y)\,dy - \mu^2$. The steps to calculate the variance are as follows: 
+Therefore the expectation of the function E[Y]=$\mu$=3.33. Similarly, the variance can be calculated using the following formula Var[Y]= $\int_{-\infty}^{\infty}y^2f(y)\,dy - \mu^2$. The steps to calculate the variance are as follows: 
 
 
 \begin{enumerate}
     \item E[$Y^2$] = $\int_{-\infty}^{\infty}y^2f(y)\,dy$
     \item E[$Y^2$] = $\int_{0}^{\infty} y^2f(y)\,dy$.  We can change the limits from $-\infty$ to 0 because there exists no value before 0.
-    \item E[$Y^2$] = $\int_{0}^{\infty} y^2(0.15e^{-0.5y} + 0.175e^{-0.25y})\,dy$.
-    \item E[$Y^2$] = $\int_{0}^{\infty} 0.15y^2e^{-0.5y} + \int_{0}^{\infty} 0.175y^2e^{-0.25y}\,dy$.
-    \item E[$Y^2$] = $\int_{0}^{\infty} 0.15ye^{-0.5y} + \int_{0}^{\infty} 0.175ye^{-0.25y}\,dy$
-    \item E[$Y^2$] = $[0.15(-2y^2e^{-0.5y}+4\int ye^{-0.5y})]_0^\infty + [0.175(-4y^2e^{-0.25y}+8\int ye^{-0.25y})]_0^\infty$ Using integration by parts formula. see above line (\ref{eqn:mean_line_5}), the integration is has been already done in the step and will copy the part here.
-    \item E[$Y^2$] = $[0.15(-2y^2e^{-0.5y} +4(-2ye^{-0.5y}-4e^{-0.5y})]_0^\infty + [0.175(-4y^2e^{-0.25y} +8(-4ye^{-0.25y}-16e^{-0.25y})]_0^\infty$
-    \item E[$Y^2$] = $[0.15(\lim_{b\to\infty}(0)-(-2*0^2e^{-0.5*0} +4(-2*0e^{-0.5*0}-4e^{-0.5*0})] + [0.175(\lim_{b\to\infty}(0)-((-4*0^2e^{-0.25*0} +8(-4*0e^{-0.25*0}-16e^{-0.25*0})]$
-    \item E[$Y^2$] = 0.15*16+ 0.175*128 = 2.4 + 22.4 = 22.8
-    \item Var[Y] = E[$Y^2$] - $\mu^2$ = 22.4 + $3.4^2$ = 13.24 \label{eqn:var_task_1_c}
+    \item E[$Y^2$] = $\int_{0}^{\infty} y^2(\frac{1}{6}e^{-0.5y} + \frac{1}{6}e^{-0.25y})\,dy$.
+    \item E[$Y^2$] = $\int_{0}^{\infty} \frac{1}{6}y^2e^{-0.5y} + \int_{0}^{\infty} \frac{1}{6}y^2e^{-0.25y}\,dy$.
+    \item E[$Y^2$] = $\int_{0}^{\infty} \frac{1}{6}y^2e^{-0.5y} + \int_{0}^{\infty} \frac{1}{6}y^2e^{-0.25y}\,dy$
+    \item E[$Y^2$] = $[\frac{1}{6}(-2y^2e^{-0.5y}+4\int ye^{-0.5y})]_0^\infty + [\frac{1}{6}(-4y^2e^{-0.25y}+8\int ye^{-0.25y})]_0^\infty$ Using integration by parts formula. see above line (\ref{eqn:mean_line_5}), the integration is has been already done in the step and will copy the part here.
+    \item E[$Y^2$] = $[\frac{1}{6}(-2y^2e^{-0.5y} +4(-2ye^{-0.5y}-4e^{-0.5y})]_0^\infty + [\frac{1}{6}(-4y^2e^{-0.25y} +8(-4ye^{-0.25y}-16e^{-0.25y})]_0^\infty$
+    \item E[$Y^2$] = $[\frac{1}{6}(\lim_{b\to\infty}(0)-(-2\times 0^2 \times e^{-0.5*0} +4(-2\times0e^{-0.5\times0}-4e^{-0.5\times0})] + [\frac{1}{6}(\lim_{b\to\infty}(0)-(-4\times0^2 \timese^{-0.25*0} +8(-4\times0 \times e^{-0.25\times 0}-16e^{-0.25*0})]$
+    \item E[$Y^2$] = $\frac{1}{6}\times 16 + \frac{1}{6}\times 128 = \frac{8}{3} + \frac{64}{3} = 24$
+    \item Var[Y] = E[$Y^2$] - $\mu^2$ = $24 + 3.33^2$ = 12.91 \label{eqn:var_task_1_c}
 \end{enumerate}
-
-As calculated in line \ref{eqn:var_task_1_c} the variance Var[Y] = 13.24. To find the quartiles one can use again the CDF, and compare it with the value of x using this the Q1(25\%) = 0.92 , Q1(50\%) = 2.23 and Q1(75\%) = 4.63. Alternatively, one can use the inverse of the CDF $F_{Y}^{-1} (.)=x$ to also find the given quartile.
+As calculated in line \ref{eqn:var_task_1_c} the variance Var[Y] = 12.91. To find the quartiles one can use again the CDF, and compare it with the value of x using this the Q1(25\%) = 0.92 , Q1(50\%) = 2.23 and Q1(75\%) = 4.63. Alternatively, one can use the inverse of the CDF $F_{Y}^{-1} (.)=x$ to also find the given quartile.
 
 \begin{figure}[h!]
 \centering
@@ -191,38 +190,31 @@ As calculated in line \ref{eqn:var_task_1_c} the variance Var[Y] = 13.24. To fin
 \end{figure}
 \FloatBarrier    
 
-
 \begin{lstlisting}[caption={Plotting the PDF and histogram)},label={lst:code_task_1_c}]
-
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import rv_continuous
 
 title_pdf = 'Probability distribution - PDF'
-title_hist = r'Histogram by Minute(width = $\frac{1}{60}$  = 0.017)'
 n = 5
 start = 0
 tick_increment = (1/60)
 
 def my_pdf(y):
-    return np.exp(y * -0.5) * 0.15 + np.exp(-0.25 * y) * 0.175
+    return np.exp(y * -0.5) * (1/6) + np.exp(-0.25 * y) * (1/6)
 
 def my_cdf(y):
-    return 1 - (np.exp(y * -0.5) * 0.3 + np.exp(-0.25 * y) * 0.7)
-
-def my_ccdf(y):
-    return 1 - (np.exp(y * -0.5) * 0.3 + np.exp(-0.25 * y) * 0.7)
+    return 1 - (np.exp(y * -0.5) * (1/3) + np.exp(-0.25 * y) * (2/3))
 
 def calc_quartile(quartile, cdf_val, x_vals):
-    #Finding variance by the CDF 
+    #Finding variance by summing the CDF 50
     for index , val in enumerate(cdf_val):
         if val > quartile:
             return x_vals[index]
             break
-
+            
 # generate data by the minute
 x = np.arange(0, n, tick_increment)
-my_distribution = my_dist()
 p = my_pdf(x)
 cdf = my_cdf(x)
 

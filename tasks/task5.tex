@@ -1,0 +1,10 @@
+\chapter{Assignment 5: Sufficient Statistics}
+We have a probability density function $f_x(x,\theta) = \frac{1}{5! \theta^6}x^5e^{\frac{-x}{\theta}}$ which depends on the parameter $\theta \in \mathbb{R}^+$ and we want to find a sufficient statistic $Y=u(x_1, x_2,..x_n)$. In order to calculate the sufficient statistics, we would firstly have to rewrite the given probability function of the random sample $(X_1, X_2, ..., X_n)$ into its joint density function which is as follows:
+\begin{equation} \label{eqn:joint_pdf_task_5}
+        f(x|\theta) = \prod_{i=1}^{n} \frac{1}{5! \theta^6}x^5e^{\frac{-x_i}{\theta}} = \frac{1}{5!^n \theta^{6n}}x_i^{5n}e^{\frac{-1}{\theta} \sum_{i=1}^{n}x_i} 
+\end{equation}
+Now we can apply the Neyman's factorization theorem where our statistic Y is a sufficient statistic of the parameter $\theta$ when we can find two non-negative functions g and h given $f(x_1;\theta)f(x_2;\theta)...f(x_n;\theta)=h(x) g_{\theta}(Y(x))$ and the function h does not depend upon the parameter $\theta$ (see \cite{hogg:2005}, pg. 436). Using the theorem we can arrange the joint density function that we defined in equation \ref{eqn:joint_pdf_task_5} in such a way that we have the two functions h and g which is as follows:
+\begin{equation} \label{eqn:non_neg_function_task_5}
+   h(x) g_{\theta}(Y(x)) = \frac{x_i^{5n}}{5!^n} \times \frac{e^{\frac{-1}{\theta} \sum_{i=1}^{n}x_i}}{\theta^{6n}} 
+\end{equation}\newline\newline
+We can see in equation \ref{eqn:non_neg_function_task_5} that the function is now divided into two parts, one which is dependent on the parameter $\theta$ g and the function which does not depend on $\theta$ but only on x. As we can see both the functions are non negative and the function h is independent of $\theta$,now we can say that $\sum_{i=1}^{n}x_i$ is the sufficient statistic for our parameter. 
