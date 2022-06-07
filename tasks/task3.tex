@@ -28,8 +28,8 @@ The calculated density function of T is
 Using the density function of T, we can also calculate the likelihood function which is: 
 
 \begin{enumerate}
-    \item $ f(\theta/T) = \prod_{i=1}^{n} \frac{1}{\theta^2} e^{\frac{-t_i}{\theta}}t_i,  \forall_i \in {1,2,... n}, t_i \in [0, \theta]$
-    \item $ f(\theta/T) = \frac{1}{\theta^{2n}} e^{-\sum_{i=1}^{n} \frac{t_i}{\theta}} \prod_{i=1}^{n} t_i $. Simplifying the equation.
+    \item $ f(\theta|T) = \prod_{i=1}^{n} \frac{1}{\theta^2} e^{\frac{-t_i}{\theta}}t_i,  \forall_i \in {1,2,... n}, t_i \in [0, \theta]$
+    \item $ f(\theta|T) = \frac{1}{\theta^{2n}} e^{-\sum_{i=1}^{n} \frac{t_i}{\theta}} \prod_{i=1}^{n} t_i $. Simplifying the equation.
 \end{enumerate}
 So, the calculated likelihood function is $ f(\theta/T) = \frac{1}{\theta^{2n}} e^{-\sum_{i=1}^{n} \frac{t_i}{\theta}} \prod_{i=1}^{n} t_i $. This function can be transformed by using log, as the multiplications can be converted into sums which would be easier to calculate. The transformed likelihood function is $l(\theta) = log(\frac{1}{\theta^{2n}} + log(e^{-\sum_{i=1}^{n} \frac{t_i}{\theta}}) + log(\prod_{i=1}^{n} t_i)$. Using the transformed likelihood function we can calculate the maximum likelihood function for $\theta$ by finding the first derivative of the log function where the slope is 0.
 
@@ -41,4 +41,8 @@ So, the calculated likelihood function is $ f(\theta/T) = \frac{1}{\theta^{2n}} 
     \item $ 0 =\frac{-2n}{\theta} - {\sum_{i=1}^{n} \frac{t_i}{\theta^2}}$
     \item $ \theta_{MLE} ={\sum_{i=1}^{n} \frac{t_i}{2n}}$
 \end{enumerate}
-The computed maximum likelihood of the bandwidth to total with the given data from the experiment is $T_{MLE}={\sum_{i=1}^{n} \frac{t_i}{2n}} = \frac{56}{10} =5.6$ and the expectation is E[T] = $\sum_{i=1}^{n} \frac{t_i}{n} = \frac{56}{5} = 11.2$.
+The given sample data for the bandwidth totals to failure are :
+\begin{center}
+    58, 3, 88, 7, 29
+\end{center} 
+The computed maximum likelihood of the bandwidth to total with the given data from the experiment is $T_{MLE}={\sum_{i=1}^{n} \frac{t_i}{2n}} = \frac{185}{10} =18.5$ and the expectation is E[T] = $\sum_{i=1}^{n} \frac{t_i}{n} = \frac{185}{5} = 37$.

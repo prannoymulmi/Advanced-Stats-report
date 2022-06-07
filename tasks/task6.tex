@@ -1,1 +1,49 @@
 \chapter{Assignment 6: Bayesian Estimates}
+Given is a random sample $X_1, X_2,...., X_{10}$ with sample size n = 10, where the likelyhood function $f(x|\theta)$ follows a gamma distribution with the parameters $\alpha = 3$ and $\beta = \frac{1}{\theta}$, $\Gamma(3, \frac{1}{\theta})$. The parameter $ \theta $ is also the unknown, which is to be estimated using the Bayes point estimation. Similarly, we also assume that out prior $f(\theta)$ also follows a gamma-distribution with with parameter $\alpha = 3$ and $\beta = 2$, $\Gamma(3, 2)$.\newline \newline
+Firstly, we can define our likelyhood function $f(x|\theta)$ using the PDF of the gamma distribution which is given by (see \cite{hogg:2005}, pg 188)
+\begin{equation}\label{eqn:hogg_gamma_pdf}
+f(x) =\begin{cases*}
+    \frac{1}{\Gamma(\alpha)\beta^\alpha} x^{\alpha - 1} e^{-\frac{x}{\beta}} &\text{for 0 $<$ x $<$ $\infty$} 
+    &\\0 &\text{elsewhere}
+    \end{cases*} \newline
+\end{equation}
+Using equation \ref{eqn:hogg_gamma_pdf} we can calculate the likelyhood function and the joint conditional PDF, which is as follows:
+\begin{enumerate}
+    \item $f(x|\theta) = \frac{1}{\Gamma(\alpha)\beta^\alpha} x^{\alpha - 1} e^{-\frac{x}{\beta}}$
+    \item $f(x|\theta) = \frac{1}{\Gamma(3)(\frac{1}{\theta})^3} x^{3- 1} e^{-\frac{x}{\frac{1}{\theta}}}$
+    \item $f(x|\theta) = \frac{1}{\Gamma(3)(\frac{1}{\theta})^3} x^{2} e^{-x\theta}$
+     \item $f(x|\theta) = \frac{1}{\Gamma(3)} \theta^3 x^{2- 1} e^{-x\theta}$
+    \item $\Mathbb{L}(x|\theta) = f_1(x_1|\theta) f_2(x_2|\theta)....f_n(x_n|\theta)$
+    \item $\Mathbb{L}(x|\theta) = \prod_{i=1}^{n} f(x|\theta)$
+    \item $\Mathbb{L}(x|\theta) = \frac{1}{\Gamma(3)^n} \theta^{3n} x_i^{2} e^{-\sum_{i=1}^{n}x_i\theta}$
+\end{enumerate}
+We also can define the prior $f(\theta)$ using the equation \ref{eqn:hogg_gamma_pdf} which turns out to be $f(\theta) = \frac{1}{\Gamma(\alpha)2^3}\theta^2 e^{-\frac{\theta}{2}}$. The posterior  is proportional to the likelyhood function and the prior (\cite{hogg:2005}, pg 672) which can be written as follows:
+\begin{equation} \label{eqn:bayes_prop}
+    f(\theta|x) \propto \Mathbb{L}(x|\theta) f(\theta)
+\end{equation}
+Using the proportional property from equation \ref{eqn:bayes_prop}, we can calculate the posterior and the steps are as follows:
+\begin{enumerate}
+    \item $f(\theta|x) \propto \Mathbb{L}(x|\theta)f(\theta)$
+    \item $f(\theta|x) \propto \frac{1}{\Gamma(3)^n} \theta^{3n} x_i^{2} e^{-\sum_{i=1}^{n}x_i\theta} \frac{1}{\Gamma(\alpha)2^3}\theta^2 e^{-\frac{\theta}{2}}$
+    \item $f(\theta|x) \propto  \theta^{3n} e^{-\sum_{i=1}^{n}x_i\theta} \theta^2 e^{-\theta0.5}$ Removing all the constants and x which are not dependent on $\theta$
+     \item $f(\theta|x) \propto  \theta^{3n+2} e^{-\sum_{i=1}^{n}x_i\theta +0.5\theta}$ 
+    \item $f(\theta|x) \propto  \theta^{3n+3-1} e^{-\theta \sum_{i=1}^{n}x_i +0.5}$  
+\end{enumerate}
+We can see that the posterior also follows a gamma distribution. We can say this because when we compare the obtained results with the gamma PDF (see equation \ref{eqn:hogg_gamma_pdf}) it looks like the gamma PDF with parameters $\alpha=3n+3$ and $\beta=\frac{1}{\sum_{i=1}^{n}x_i +0.5}$. \newline \newline
+Given is the observed mean $\Bar{x} = 17.2$ and we would like to calculate the Bayes point estimate associated with the square-error loss function $\Mathbb{L}[\theta, \delta(y)] = [\theta - \delta(x)]^2$ where $\delta(x)$ is the error. In this case the estimator for the squared-error loss function is the mean of the posterior distribution $\Gamma(3n+3, \frac{1}{\sum_{i=1}^{n}x_i +0.5})$. The mean of a gamma distribution $\mu = \alpha\beta$ (see, \cite{hogg:2005}, pg 189). Accordingly we calculate the mean:
+\begin{enumerate}
+    \item $\mu = \alpha\beta$
+    \item $\mu = \frac{3n+3}{\sum_{i=1}^{n}x_i +0.5}$
+    \item $ \mu = \frac{3\times10 + 3}{10\times 17.2 +0.5}$ We know mean $\Bar{x} = \frac{1}{N}\sum_{i=1}^{n}x_i$
+    \item $ \mu = \frac{33}{172.5}$
+    \item $ \mu = 0.191$
+\end{enumerate}
+Therefore, the Bayes point estimate associated with the square-error loss $\mu = 0.191$.\newline
+Lastly, we would like to calculate the Bayes point estimation using the mode and for the gamma distribution the mode can be calculated using the log function of the PDF of the gamma and taking its first derivative with the maximum slope of 0, we get $(\alpha -1)\beta$. Now, using this formula and replacing the values of the parameters from the posterior we get:
+\begin{enumerate}
+    \item $mode = (\alpha -1)\beta$
+    \item $mode = \frac{(3n+3 -1)}{\sum_{i=1}^{n}x_i +0.5}$
+    \item $mode = \frac{32}{172.5}$
+    \item $mode = 0.186$
+\end{enumerate}
+Lastly, the Bayes estimate using the mode of the posterior leads to the value of 0.186.
