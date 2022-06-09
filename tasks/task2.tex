@@ -9,7 +9,7 @@ For the given samples (Variable X and Y) a scatter plot deems to be the most sui
 \caption{Scatter Plot for X and Y}\label{fig:task_2_a}
 \end{figure}
 \FloatBarrier
-\newline A simple look in the scatter plot (fig:\ref{fig:task_2_a}) shows us the data have a very large covariance as the points in the graph are very sparsely distributed in the plot.
+A simple look in the scatter plot in figure \ref{fig:task_2_a} shows us the data has a very large covariance as the points in the graph are very sparsely distributed in the plot.
 
 \begin{lstlisting}[caption={Plotting the Scatter Plot with Variance Calculations)},label={lst:code_task_2_a}]
 import numpy as np
@@ -50,7 +50,7 @@ plt.savefig('images/task_2_a.pdf')
 \subsubsection{Mean \& Covariance}   
 
 The mean of Variables can be calculated using E[X]=  $\frac{1}{N} \sum_{i=1}^{N}x_i$  (\cite{Iubh:2021}) where N=20 is the total number of samples and the numerator is the sum of the random variable X or Y. Using this formula, the expectation ($\mu$) of the variable X and Y are calculated. E[X] = $\mu_x$= -1.62 and E[Y] = $\mu_y$= 67.56 \newline 
-The Covariance of two variables can be calculated using cov(X,Y) =  $\frac{1}{N} \sum_{i=1}^{N}(x_i - \mu_x)^2 (y_i - \mu_y)$ (\cite{Iubh:2021}). Using the given formula, the cov(X,Y)= -1040.32\newline
+The Covariance of two variables can be calculated using cov(X,Y) =  $\frac{1}{N} \sum_{i=1}^{N}(x_i - \mu_x)^2 (y_i - \mu_y)$ (\cite{Iubh:2021}). Using the given formula the is cov(X,Y)= -1040.32.\newline
 Similarly, the Variance can be calculated using var[X]=$\frac{1}{N} \sum_{i=1}^{N}(x_i - \mu_x)^2$. The calculated variances are as follows Var[X]=32.629 and Var[Y]= 4.578e+5.
 
 \section{Task b}
@@ -96,10 +96,9 @@ The determinant of the Jacobian matrix $J_{g^{-1}(x,y)}$ is needed in order to c
     \frac{180}{\pi}\frac{-y}{x^2+y^2} & \frac{180}{\pi}\frac{x}{x^2+y^2}
     \end{vmatrix}
     
-    \item $|J_{g^{-1}(x,y)}|$ = $\frac{180}{\pi} \frac{x^2}{\sqrt{x^2+y^2}(x^2+y^2)}+ \frac{180}{\pi}\frac{y^2}{\sqrt{x^2+y^2}(x^2+y^2)}$ Calculating the determinant $\frac{\partial {h_1}}{\partial x}* \frac{\partial {h_2}}{\partial y} - \frac{\partial {h_1}}{\partial y} * \frac{\partial {h_2}}{\partial x}$
+    \item $|J_{g^{-1}(x,y)}|$ = $\frac{180}{\pi} \frac{x^2}{\sqrt{x^2+y^2}(x^2+y^2)}+ \frac{180}{\pi}\frac{y^2}{\sqrt{x^2+y^2}(x^2+y^2)}$ Calculating the determinant $\frac{\partial {h_1}}{\partial x}\times \frac{\partial {h_2}}{\partial y} - \frac{\partial {h_1}}{\partial y} \times \frac{\partial {h_2}}{\partial x}$
     \item $|J_{g^{-1}(x,y)}|$ = $ \frac{180}{\pi}\frac{1}{\sqrt{x^2+y^2}}$
 \end{enumerate}
-
 Using the equation (see \ref{eqn:transform_task_2_b}) we can acquire the joint density function of f(x,y)= $\frac{1}{360}\frac{180}{\pi}\frac{1}{\sqrt{x^2+y^2}} = \frac{1}{2\pi}\frac{1}{\sqrt{x^2+y^2}}$ where the support of the transformed variable is $x^2+y^2 \leq 1$. This is because the value of X and Y are both bounded with the respect to the maximum possible radius 1.
 \begin{equation}\label{eqn:density_task_2_b}
    f(x,y) =  \begin{cases*}
@@ -177,7 +176,7 @@ The steps to calculate the variance for the random variable X is given below:
     \item $Var[X]= \frac{1}{2\pi} \int_{-\infty}^{\infty}x^2  (log(\sqrt{1-x^2}+1)- log(1-\sqrt{1-x^2}))dx$
     \item $Var[X]= \frac{1}{2\pi} \int_{-1}^{1}x^2log(\sqrt{1-x^2}+1)- \int_{-1}^{1} x^2log(1-\sqrt{1-x^2})dx$
     %\item $Var[X]= \frac{1}{2\pi} \int_{-\infty}^{\infty}- %\int_{-\infty}^{\infty} x^2log(1-\sqrt{1-x^2})dx .$ Using Integrating %by parts where $u_1= log(\sqrt{1-x^2}+1), v_1= x^2$ and $u_2 = %log(1-\sqrt{1-x^2}) and v_2=x^2$
-    \item $Var[X]=\frac{1}{2\pi}(\frac{\pi}{6}-\frac{2}{9}+\frac{\pi}{6}-\frac{2}{9})$ As calculated by wolfram alpha, line 5 is the query used in wolfram to calculate the variance.
+    \item $Var[X]=\frac{1}{2\pi}(\frac{\pi}{6}-\frac{2}{9}+\frac{\pi}{6}-\frac{2}{9})$ As calculated by wolfram alpha (\cite{wolfram}), line 5 is the query used in wolfram to calculate the variance.
      \item $Var[X]=0.167$
 \end{enumerate}
 The Variance of Y is also similar because it has the same limits and similar density function. Therefore $Var[X] = 0.167$ and $Var[Y] = 0.167$

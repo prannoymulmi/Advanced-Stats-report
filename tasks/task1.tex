@@ -2,13 +2,13 @@
 
 \section{Task a}
 
-It can be said that a Binomial distribution can describe “n” independent Bernoulli trials, which can be also written as X ${\sim}$  B(p). We also know that the expectation of a Binomial distribution is \begin{equation}  E [X] = \sum_{k=0}^{n}kP(k)= np \label{task1_a} \end{equation} as given by~\cite{Iubh:2021}. \newline
+It can be said that a Binomial distribution can describe “n” independent Bernoulli trials, which can be also written as X ${\sim}$  B(p). We also know that the expectation of a Binomial distribution is \begin{equation}  E [X] = \sum_{k=0}^{n}kP(k)= np \label{task1_a} \end{equation} see ~\cite{Iubh:2021}, pg. 72. \newline
 Therefore, we can calculate the expectation of the Bernoulli distribution for P(vote = "for") = 0.94 where our number of trials is “n=1”. Thus, results in the expectation of our distribution to become “p” i.e., μ = 0.94. From figure \ref{fig:task_1_a} it can be deduced that taking a single sample of voting 94\% of the population will vote for and 6\% will vote against.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=\textwidth]{pics/task_1_a.pdf}
-\caption{Bernoulli’s single trial P votes = against(6\%)) \& (votes=for(94\%)}\label{fig:task_1_a}
+\caption{Bernoulli’s single trial P votes = against(6\%) \& votes=for(94\%)}\label{fig:task_1_a}
 \end{figure}
 \FloatBarrier 
 
@@ -44,7 +44,7 @@ In Figure \ref{fig:task_1_b} we can see that the number of meteorites (N) which 
 
 \subsubsection{Median and Variance}
 The variance of a Poisson distribution is given by Var[X]=$\lambda=\sigma^2$ (\cite{hogg:2005}), therefore the variance of this distribution is equal to λ parameter Var[X]=12.
-Likewise, the median can be defined as the mid-point, where 50\% of the samples are either above or below this point. For this we can calculate the value of X whose cumulative sum of the probability is less than 50\%. In this case the median is also 12, which is the same as the median and variance $\lambda$. The calculation of the median or 2nd quartile is done using a for loop see (listing \ref{lst:code_task_1_b} line 21)  with the cumulative sum of the probabilities and the median is stored when a value is found which is greater than 50 is found. Therefore, we can say that for this distribution the mean, median and variance are the same.
+Likewise, the median can be defined as the mid-point, where 50\% of the samples are either above or below this point. For this we can calculate the value of X whose cumulative sum of the probability is less than 50\%. In this case the median is also 12, which is the same as the median and variance $\lambda$. The calculation of the median or 2nd quartile is done using a for loop see (listing \ref{lst:code_task_1_b} line 21)  with the cumulative sum of the probabilities and the median is stored when a value is found which is greater than 50 is found. The value greater than instead of equal to 50 is checked because it is a discrete distribution and it might not have an exact value at 50\%. Therefore, we can say that for this distribution the mean, median and variance are the same.
 
 \begin{lstlisting}[caption={Plotting the PMF for Poisson Distribution)},label={lst:code_task_1_b}]
 from scipy.stats import poisson
@@ -54,7 +54,7 @@ import matplotlib.pyplot as plt
 # Definitions
 tick_increment = 1
 lmbda = 12
-n = 23
+n = 22
 X = np.arange(0, n, 1)
 
 mean, var, skew, kurt = poisson.stats(lmbda, moments='mvsk')
@@ -105,7 +105,7 @@ plt.savefig('images/task_1_b.pdf')
 \begin{figure}[h!]
 \centering
 \includegraphics[width=\textwidth]{pics/task_1_b.pdf}
-\caption{Poisson Distribution with n = 23 with median and variance}\label{fig:task_1_b}
+\caption{Poisson Distribution with n = 22 with median and variance}\label{fig:task_1_b}
 \end{figure}
 \FloatBarrier
 
