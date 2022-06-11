@@ -1,9 +1,9 @@
 \chapter{Assignment 3: A Simple Parameter Estimation}
 
-Given, is a density function of a random variable S which is a type of network router with a bandwidth total to first hardware failure dependent on a single unknown parameter $\theta$ and T is the bandwidth total to failure of the sequence of two routers. Also, the density for the random variable S is assumed to be modeled using an exponential distribution s(t)=  $\frac{1}{\theta} \exp{\frac{-t}{\theta}}$ . As T can be defined as the sum of the density functions of the two routers $S_1$  and $S_2$, we can express the density function of  $T= S_1+S_2$.\newline \newline 
+Given is a density function of a random variable S, which is a type of network router with a bandwidth total to first hardware failure dependent on a single unknown parameter $\theta$ and T is the bandwidth total to failure of the sequence of two routers. Also, the density for the random variable S is assumed to be modeled using an exponential distribution s(t)=  $\frac{1}{\theta} \exp{\frac{-t}{\theta}}$ . As T can be defined as the sum of the density functions of the two routers $S_1$  and $S_2$, we can express the density function of  $T= S_1+S_2$.\newline \newline 
 We can assume that the variables $S_1,S_2$,…,$S_n$ are independent and identically distributed. It can also be called an independent and identically distributed variable because the bandwidth total to failure of one router would not affect the other. Additionally, we can assume that the density function of the random variable is a continuous function, as it is modelled by an exponential function.\newline \newline
 Using the assumptions and using the transformation theorem (\cite{Iubh:2021}, pg. 97), we can calculate the sum of the two density functions $S_1$  and $S_2$ by convolving them, which can be also written in a short form as $T=S_1*S_2= \int_{-\infty}^{\infty} S_1(T-\tau) S_2(\tau) \,d\tau\ $.\newline\newline
-We can further simply the limits of the integral which start only from 0 because the flipped function does not overlap until it reaches 0 and then it only overlaps until t when it shifts so the convolution equation can be simplified as $T=S_1*S_2= \int_{0}^{t} S_1(T-\tau) S_2(\tau)\,d\tau\ $.The steps for calculating the density function of T are as follows:
+We can further simply the limits of the integral which start only from 0 because the flipped function does not overlap until it reaches 0. Then it only overlaps until t, so the convolution equation can be simplified as $T=S_1*S_2= \int_{0}^{t} S_1(T-\tau) S_2(\tau)\,d\tau\ $.The steps for calculating the density function of T are as follows:
 
 \begin{enumerate}
     \item $ T = \int_{0}^{t} S_1(T-\tau) S_2(\tau)\,d\tau\ $
@@ -14,7 +14,7 @@ We can further simply the limits of the integral which start only from 0 because
     \item $ T = \frac{1}{\theta^2} e^{\frac{-t}{\theta}}\int_{0}^{t} 1\,d\tau\ $ The exponential can be taken out because there is no dependence on $\tau$.
     \item $ T = \frac{1}{\theta^2} e^{\frac{-t}{\theta}}[\tau]_{0}^{t} $
     \item $ T = \frac{1}{\theta^2} e^{\frac{-t}{\theta}}(t-0) $ Replacing $\tau$ with the limits we
-    calculated the density of T.
+    calculated is the density of T.
     \item $ T = \frac{1}{\theta^2} e^{\frac{-t}{\theta}}t$
 \end{enumerate}
 

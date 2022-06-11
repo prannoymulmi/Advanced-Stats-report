@@ -1,12 +1,12 @@
 \chapter{Assignment 4: Hypothesis Test}
-It is given that we have a sample data from a long running production of 1000 quality hammers with an averaged weight of $\mu =$ 971g and a standard deviation $s= $ 59.7g. For this given data we can model the given data using a normal distribution. Following the central limit theorem see (\cite{hogg:2005}, pg.355), a random sample from size n which has a definite mean $\mu $ and variance $s^2$ would converge towards a Gaussian or a normal distribution. Assumptions made for which the models hold are as follows:
+It is given that we have a sample data from a long running production of 1000 quality hammers with an averaged weight of $\mu =$ 971g and a standard deviation $s= $ 59.7g. With this, we can model the given data using a normal distribution. Following the central limit theorem (see \cite{hogg:2005}, pg.355), a random sample from size n,1 which has a definite mean $\mu $ and variance $s^2$, would converge towards a Gaussian or a normal distribution. Assumptions made for the model to hold are as follows:
 \begin{enumerate}
     \item The random variable for the sample are located mostly around the mean and outliers are very rare.
     \item The random variables are independent of one another.
     \item The sample observation should be of a continuous nature
 \end{enumerate}
-As the model is assumed to be a normally distributed the parameters of them are the mean and its variance (\cite{Iubh:2021}, pg. 75) $\mathcal{N}(\mu, s^2) = \mathcal{N}(971, 3564.09)$.\newline
-Given, are the weights of the newly produced hammers, with sample size n= 10:
+As the model is assumed to be a normally distributed the parameters of the model are the mean and its variance (\cite{Iubh:2021}, pg. 75), $\mathcal{N}(\mu, s^2) = \mathcal{N}(971, 3564.09)$.\newline
+Given are the sample weights of hammer in the new production line, with sample size n= 10:
 \begin{center}
     961, 974, 986, 971, 970, 960, 1021, 956, 995, 967
 \end{center} 
@@ -18,16 +18,16 @@ Now, for the random sample of the weights of new hammer production factory $W = 
       H_a: \mu_0 \neq \mu& \text{ (Alternate hypothesis)}
     \end{split}
 \end{equation}
-This hypothesis is chosen because we want to check if there exists a similarity between the production for the weight of the hammers of the two production lines. When we assume that the mean of the new production site is equal to the existing one we propose that the weights might produce a more constant weight if we do not reject the null hypothesis. Also, when we reject the null hypothesis it can be said that the weights are not consistent.\newline\newline
-Furthermore, in the given case we do not know the neither the population mean nor the population variances, we rather only have the information about two sample means and their sample variances. Therefore, in this case a welch's test (see \cite{Iubh:2021}, pg. 200) deems to be suitable to carry out the test statistics. We can define out test statistic as T and the critical region as C where $P(|T| > C) =\frac{\alpha}{2}$ \label{eqn:alpha_2_rr}:
+This hypothesis is chosen because we want to check if there exists a similarity between the production for the weight of the hammers of the two production lines. When we assume that the mean of the new production site is equal to the existing one, we propose that the weights might produce a more constant weight, if we do not reject the null hypothesis. Also, when we reject the null hypothesis, it can be said that the weights are not consistent.\newline\newline
+Furthermore in the given case we do not know neither the population mean nor the population variances, rather only have the information about two sample means and their sample variances. Therefore, in this case a welch's test (see \cite{Iubh:2021}, pg. 200) deems to be suitable to carry out the test statistics. We can define our test statistic as T and the critical region as C where $P(|T| > C) =\frac{\alpha}{2}$ \label{eqn:alpha_2_rr}:
 \begin{equation}
     \begin{split}
       |T| > C_{\frac{\alpha}{2}, DOF}& \text{ (Reject $H_0$)}\\
       |T| < C_{\frac{\alpha}{2}, DOF}& \text{ (Do not reject $H_0$)}
     \end{split}
 \end{equation}
-The critical region or the cutoff can be found out if we look for the significance level $\alpha$ for the corresponding value for the degree of freedom in the T-Distribution table, in our case for a two tailed distribution. A two tailed distribution is chosen for this test because we would like to account for both the positive and the negative sides of the rejection regions giving us more evidence of the similarity between the two samples. This is also the reason why the significance level or the error type I (see \ref{eqn:alpha_2_rr}) has to be divided into two. \newline \newline
-In this case an error I probability, which is the error of rejecting the null hypothesis when $H_0$ is true, an $\alpha$ of 0.05 or 5\% sounds plausible for this problem. The 5\% error is a widely used value for the $\alpha$ and in this experiment the precision for error does not have to be small and an error for this range can be tolerated. Now, we can calculate the degrees of freedom for this test which can be approximated using the harmonic mean (see \cite{Iubh:2021}, pg. 200) which is as follows:
+The critical region or the cutoff can be found, if we look for the significance level $\alpha$ for the corresponding value for the degree of freedom in the T-Distribution table, in our case for a two tailed distribution. A two tailed distribution is chosen for this test because we would like to account for both the positive and the negative sides of the rejection regions, giving us more evidence of the similarity between the two samples. This is also the reason why the significance level or the error type I (see \ref{eqn:alpha_2_rr}) has to be divided into two. \newline \newline
+In this case, an error I probability, which is the error of rejecting the null hypothesis when $H_0$ is true, an $\alpha$ value of 0.05 or 5\% sounds plausible for this problem. The 5\% error is a widely used value for the $\alpha$ and in this experiment the precision for error does not have to be small and an error for this range can be tolerated. Now, we can calculate the degrees of freedom for this test which can be approximated using the harmonic mean (see \cite{Iubh:2021}, pg. 200) which is as follows:
 \begin{enumerate}
     \item $d.o.f = \frac{2}{\frac{1}{n_1}+\frac{1}{n_2}}$ where $n_1$= 1000 and $n_2$ = 10
     \item $d.o.f = \frac{2}{\frac{1}{1000}+\frac{1}{10}}$
@@ -41,4 +41,4 @@ With the d.o.f we can look up in the T-Table distribution (see \cite{t-table}) t
     \item $T_{obv} = - 0.782$
     \item $|T_{obv}| = 0.782$ ( We take the absolute value because the T - Distribution is symmetric and both tails must be accounted for.)
 \end{enumerate}
-Similarly, we can also calculate the p-value for the given test which is given as $P(T > |T_{obv}| | H_0) = 2P(T > 0.782 | H_0) = 0.443 $ (Calculated using P-value widget \cite{wolfram-pvalue}, where v(d.o.f) = 20 and $t_{obv} = 0.782$). Lastly, we can now conclude and say that we do not reject our null hypothesis because the the calculated p-value(0.443)  $> \alpha$ (0.05), which gives us a hint that these two samples are not statistically significant or in other words very similar and produce consistent results.
+Similarly, we can also calculate the p-value for the given test which is given as $P(T > |T_{obv}| | H_0) = 2P(T > 0.782 | H_0) = 0.443 $ (Calculated using P-value widget \cite{wolfram-pvalue}, where v(d.o.f) = 20 and $t_{obv} = 0.782$). Lastly, we can now conclude and say that we do not reject our null hypothesis because the the calculated p-value(0.443)  $> \alpha$ (0.05), which gives us a hint that these two samples are not statistically significant or in other words, very similar and produce consistent results.
